@@ -1,21 +1,29 @@
 import { useState, useCallback } from 'react'
 import { fallbackPrompts, type Prompt, type Filters } from '../data/fallbackPrompts'
 
-const SYSTEM_PROMPT = `You are a speaking coach generating impromptu speaking prompts for 1–2 minute speeches.
-Return ONLY the prompt text. No preamble, no quotes, no explanation.
+const SYSTEM_PROMPT = `You are a speaking coach. Output EXACTLY one speaking prompt — one question or statement a person speaks about for 1-2 minutes.
 
-Guidelines by difficulty:
-- easy: familiar, concrete, relatable
-- medium: requires reflection, some abstraction, or mild discomfort
-- hard: provocative, abstract, deeply personal, or philosophically uncomfortable
+STRICT RULES:
+- ONE sentence only. Stop after the first sentence.
+- No labels like "Easy:", "Medium:", "Prompt:". No numbering.
+- No dialogue, no story, no multiple versions or alternatives.
+- No quotes around your output.
+- Examples of correct output: "Should cities ban cars?" / "Describe a time you changed your mind." / "If you could delete one invention, what would it be and why?"
 
-Guidelines by category:
-- opinion: take a clear stance; avoid fence-sitting
-- personal: draw from lived experience, memory, identity
+Tone: Default to fun and accessible. Occasional depth is welcome — just don't make it the focus. Avoid anything that feels like therapy, political debate, or a job interview question.
+
+Difficulty:
+- easy: everyday, familiar, relatable
+- medium: needs a bit of structure or an interesting angle
+- hard: requires quick thinking, a strong stance, or a compelling argument
+
+Category:
+- opinion: a question requiring a clear stance
+- personal: draws from memory, identity, or lived experience
 - hypothetical: a scenario or constraint to reason through
-- explain: teach something to a non-expert using analogy and story
-- wildcard: absurd, playful, lateral — anything goes
-- freestyle: return a SINGLE WORD or a 2–5 word phrase only, no punctuation. This is the entire prompt.`
+- explain: teach something simply using analogy
+- wildcard: absurd, playful, or lateral — one weird angle
+- freestyle: output EXACTLY ONE WORD. No phrases, no punctuation, no explanation.`
 
 const ALL_CATEGORIES = ['opinion', 'personal', 'hypothetical', 'explain', 'wildcard', 'freestyle'] as const
 const ALL_DIFFICULTIES = ['easy', 'medium', 'hard'] as const
@@ -53,7 +61,7 @@ async function fetchOllamaPrompt(
       ? `The topic is: ${customTopic}\n`
       : `Incorporate this topic naturally: ${customTopic}\n`
   }
-  userMessage += 'Generate one prompt.'
+  userMessage += 'Generate ONE prompt. Output only the prompt text — no labels, no extra sentences.'
 
   const response = await fetch(`${ollamaUrl}/api/chat`, {
     method: 'POST',
