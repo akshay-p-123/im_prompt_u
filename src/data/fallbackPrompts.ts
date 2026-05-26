@@ -70,8 +70,8 @@ export const fallbackPrompts: Prompt[] = [
   { id: 'fs2', text: 'Airports', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
   { id: 'fs3', text: 'Momentum', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
   { id: 'fs4', text: 'Nostalgia', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
-  { id: 'fs5', text: 'Silence', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
+  { id: 'fs5', text: 'Silence', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
   { id: 'fs6', text: 'The second before you fall asleep', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
   { id: 'fs7', text: 'Almost remembering', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
-  { id: 'fs8', text: 'Tuesday at 3pm', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
+  { id: 'fs8', text: 'Tuesday at 3pm', category: 'freestyle', difficulty: 'hard', isFreestyle: true },
 ]
