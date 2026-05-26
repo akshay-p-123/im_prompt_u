@@ -18,6 +18,7 @@ export function useTimer(): UseTimerReturn {
   const [state, setState] = useState<TimerState>('idle')
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const durationRef = useRef<60 | 120>(120)
+  const stateRef = useRef<TimerState>('idle')
 
   const clearTick = () => {
     if (tickRef.current !== null) {
@@ -25,6 +26,11 @@ export function useTimer(): UseTimerReturn {
       tickRef.current = null
     }
   }
+
+  // Keep stateRef in sync with state
+  useEffect(() => {
+    stateRef.current = state
+  }, [state])
 
   // Start the interval when state becomes 'running'
   useEffect(() => {
@@ -58,13 +64,10 @@ export function useTimer(): UseTimerReturn {
   }, [])
 
   const setDuration = useCallback((d: 60 | 120) => {
-    setState(s => {
-      if (s !== 'idle') return s
-      durationRef.current = d
-      setDurationState(d)
-      setSeconds(d)
-      return 'idle'
-    })
+    if (stateRef.current !== 'idle') return
+    durationRef.current = d
+    setDurationState(d)
+    setSeconds(d)
   }, [])
 
   return { seconds, state, duration, start, pause, reset, setDuration }
