@@ -70,6 +70,7 @@ async function fetchOllamaPrompt(
     signal: AbortSignal.timeout(30_000),
   })
 
+  if (!response.ok) throw new Error(`Ollama HTTP ${response.status}`)
   const data = await response.json() as { message?: { content?: string } }
   const text = data.message?.content?.trim() ?? ''
   if (!text) throw new Error('Empty response from Ollama')
@@ -97,9 +98,10 @@ export function usePromptGenerator(): UsePromptGeneratorReturn {
   const [error, setError] = useState<string | null>(null)
 
   const generatePrompt = useCallback(async (filters: Filters, customTopic?: string) => {
-    // Freestyle shortcut: ≤3 words, no ? or .
+    // Freestyle shortcut: ≤3 words, no ? or . (only when category allows freestyle)
     if (
       customTopic &&
+      (filters.category === 'freestyle' || filters.category === 'all') &&
       customTopic.trim().split(/\s+/).length <= 3 &&
       !/[?.]/.test(customTopic)
     ) {

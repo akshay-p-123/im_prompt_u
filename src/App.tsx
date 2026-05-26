@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { PromptCard } from './components/PromptCard'
 import { PromptControls } from './components/PromptControls'
 import { Timer } from './components/Timer'
@@ -19,8 +19,12 @@ function GearIcon() {
 }
 
 export default function App() {
-  const timer = useTimer()
   const { sessions, logSession, streak, longestStreak, totalSessions, completedDates, settings, updateSettings, clearHistory } = useSessionTracker()
+  const timer = useTimer(
+    (settings.preferredDuration === 60 || settings.preferredDuration === 120)
+      ? settings.preferredDuration
+      : 120
+  )
   const { prompt, isLoading, loadingSeconds, error, generatePrompt } = usePromptGenerator()
 
   const [filters, setFilters] = useState<Filters>({
@@ -65,13 +69,20 @@ export default function App() {
     generatePrompt(filters, customTopic || undefined)
   }, [prompt, timer, logSession, showToast, generatePrompt, filters, customTopic])
 
+  const handleDoneRef = useRef(handleDone)
+  useEffect(() => { handleDoneRef.current = handleDone }, [handleDone])
+
   // Auto-complete when timer finishes
   useEffect(() => {
     if (timer.state === 'finished') {
-      handleDone()
+      handleDoneRef.current()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer.state])
+
+  // Persist duration changes
+  useEffect(() => {
+    updateSettings({ preferredDuration: timer.duration })
+  }, [timer.duration, updateSettings])
 
   const canDone = timer.state === 'running' || timer.state === 'paused' || timer.state === 'finished'
 

@@ -12,12 +12,12 @@ export interface UseTimerReturn {
   setDuration: (d: 60 | 120) => void
 }
 
-export function useTimer(): UseTimerReturn {
-  const [duration, setDurationState] = useState<60 | 120>(120)
-  const [seconds, setSeconds] = useState(120)
+export function useTimer(initialDuration: 60 | 120 = 120): UseTimerReturn {
+  const [duration, setDurationState] = useState<60 | 120>(initialDuration)
+  const [seconds, setSeconds] = useState<number>(initialDuration)
   const [state, setState] = useState<TimerState>('idle')
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const durationRef = useRef<60 | 120>(120)
+  const durationRef = useRef<60 | 120>(initialDuration)
   const stateRef = useRef<TimerState>('idle')
 
   const clearTick = () => {
