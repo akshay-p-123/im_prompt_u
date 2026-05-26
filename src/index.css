@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0f0f13;
+    color: #f3f4f6;
+    min-height: 100vh;
+  }
+  * {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0f0f13];
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #1e1e27 25%,
+    #2a2a36 50%,
+    #1e1e27 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
