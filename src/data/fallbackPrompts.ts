@@ -19,10 +19,10 @@ export const fallbackPrompts: Prompt[] = [
   { id: 'op1', text: 'Should schools assign homework?', category: 'opinion', difficulty: 'easy', isFreestyle: false },
   { id: 'op2', text: 'Is breakfast really the most important meal of the day?', category: 'opinion', difficulty: 'easy', isFreestyle: false },
   { id: 'op3', text: 'Is expertise overrated in the age of search engines?', category: 'opinion', difficulty: 'medium', isFreestyle: false },
-  { id: 'op4', text: 'Should social media platforms be held liable for their content?', category: 'opinion', difficulty: 'medium', isFreestyle: false },
+  { id: 'op4', text: 'Is it rude to text at the dinner table?', category: 'opinion', difficulty: 'medium', isFreestyle: false },
   { id: 'op5', text: 'Is remote work better or worse for society overall?', category: 'opinion', difficulty: 'medium', isFreestyle: false },
   { id: 'op6', text: "Pick a hill you'd die on and defend it.", category: 'opinion', difficulty: 'hard', isFreestyle: false },
-  { id: 'op7', text: 'Argue that a widely held moral belief in your community is actually wrong.', category: 'opinion', difficulty: 'hard', isFreestyle: false },
+  { id: 'op7', text: 'Hot dogs are sandwiches. Defend or deny.', category: 'opinion', difficulty: 'hard', isFreestyle: false },
   { id: 'op8', text: 'Is meritocracy a myth? Defend your position.', category: 'opinion', difficulty: 'hard', isFreestyle: false },
 
   // Personal
@@ -32,7 +32,7 @@ export const fallbackPrompts: Prompt[] = [
   { id: 'pe4', text: 'Describe a moment that changed how you see yourself.', category: 'personal', difficulty: 'medium', isFreestyle: false },
   { id: 'pe5', text: 'Talk about a relationship that shaped who you are.', category: 'personal', difficulty: 'medium', isFreestyle: false },
   { id: 'pe6', text: "What's a belief you hold that most people in your life would disagree with?", category: 'personal', difficulty: 'hard', isFreestyle: false },
-  { id: 'pe7', text: 'Describe the version of yourself you are most ashamed of.', category: 'personal', difficulty: 'hard', isFreestyle: false },
+  { id: 'pe7', text: 'Describe your worst fashion era. What were you thinking?', category: 'personal', difficulty: 'hard', isFreestyle: false },
   { id: 'pe8', text: "What would your life look like if you'd made the opposite choice at a pivotal moment?", category: 'personal', difficulty: 'hard', isFreestyle: false },
 
   // Hypothetical
@@ -52,7 +52,7 @@ export const fallbackPrompts: Prompt[] = [
   { id: 'ex4', text: 'Explain how the internet works using only physical-world analogies.', category: 'explain', difficulty: 'medium', isFreestyle: false },
   { id: 'ex5', text: 'Explain why diversity makes groups smarter — use a story or metaphor.', category: 'explain', difficulty: 'medium', isFreestyle: false },
   { id: 'ex6', text: 'Explain the concept of entropy to a ten-year-old using three concrete examples.', category: 'explain', difficulty: 'hard', isFreestyle: false },
-  { id: 'ex7', text: 'Explain why democracy sometimes produces bad outcomes, without making it sound like democracy is bad.', category: 'explain', difficulty: 'hard', isFreestyle: false },
+  { id: 'ex7', text: 'Explain why group projects always go wrong — tell it as a story.', category: 'explain', difficulty: 'hard', isFreestyle: false },
   { id: 'ex8', text: 'Explain consciousness as if the listener has never experienced being confused before.', category: 'explain', difficulty: 'hard', isFreestyle: false },
 
   // Wildcard
@@ -71,7 +71,7 @@ export const fallbackPrompts: Prompt[] = [
   { id: 'fs3', text: 'Momentum', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
   { id: 'fs4', text: 'Nostalgia', category: 'freestyle', difficulty: 'easy', isFreestyle: true },
   { id: 'fs5', text: 'Silence', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
-  { id: 'fs6', text: 'The second before you fall asleep', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
-  { id: 'fs7', text: 'Almost remembering', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
-  { id: 'fs8', text: 'Tuesday at 3pm', category: 'freestyle', difficulty: 'hard', isFreestyle: true },
+  { id: 'fs6', text: 'Pockets', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
+  { id: 'fs7', text: 'Leftovers', category: 'freestyle', difficulty: 'medium', isFreestyle: true },
+  { id: 'fs8', text: 'Buffering', category: 'freestyle', difficulty: 'hard', isFreestyle: true },
 ]
