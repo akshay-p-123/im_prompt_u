@@ -13,7 +13,7 @@ describe('calculateStreak', () => {
     vi.useFakeTimers()
     vi.setSystemTime(new Date('2026-05-26T12:00:00'))
   })
-  afterEach(() => vi.useRealTimers())
+  afterEach(() => { vi.useRealTimers() })
 
   it('returns 0 for empty set', () => {
     expect(calculateStreak(new Set())).toBe(0)

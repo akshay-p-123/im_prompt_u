@@ -79,7 +79,8 @@ describe('usePromptGenerator', () => {
   })
 
   it('sets isLoading true during fetch', async () => {
-    let resolvePromise!: (v: unknown) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let resolvePromise!: (v: any) => void
     vi.mocked(fetch).mockReturnValue(new Promise(r => { resolvePromise = r }) as Promise<Response>)
     const { result } = renderHook(() => usePromptGenerator())
     act(() => { result.current.generatePrompt(defaultFilters) })

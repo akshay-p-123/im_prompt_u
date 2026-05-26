@@ -3,8 +3,8 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { useTimer } from '../useTimer'
 
 describe('useTimer', () => {
-  beforeEach(() => vi.useFakeTimers())
-  afterEach(() => vi.useRealTimers())
+  beforeEach(() => { vi.useFakeTimers() })
+  afterEach(() => { vi.useRealTimers() })
 
   it('initializes in idle state with 120s', () => {
     const { result } = renderHook(() => useTimer())
