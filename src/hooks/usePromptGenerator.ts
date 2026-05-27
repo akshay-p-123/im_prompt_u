@@ -49,7 +49,7 @@ async function fetchOllamaPrompt(
   retryCount: number = 0,
 ): Promise<{ text: string; resolvedCategory: string; resolvedDifficulty: string }> {
   const ollamaUrl = localStorage.getItem('speaking-ollama-url') ?? 'http://localhost:11434'
-  const ollamaModel = localStorage.getItem('speaking-ollama-model') ?? 'llama3.1:8b'
+  const ollamaModel = localStorage.getItem('speaking-ollama-model') ?? 'qwen2:0.5b'
 
   const resolvedCategory = filters.category === 'all' ? randomItem(ALL_CATEGORIES) : filters.category
   const resolvedDifficulty = filters.difficulty === 'all' ? randomItem(ALL_DIFFICULTIES) : filters.difficulty

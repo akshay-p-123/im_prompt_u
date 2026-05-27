@@ -10,7 +10,7 @@ export function SettingsModal({ onClose, onClearHistory }: Props) {
     () => localStorage.getItem('speaking-ollama-url') ?? 'http://localhost:11434'
   )
   const [model, setModel] = useState(
-    () => localStorage.getItem('speaking-ollama-model') ?? 'llama3.1:8b'
+    () => localStorage.getItem('speaking-ollama-model') ?? 'qwen2:0.5b'
   )
   const [testStatus, setTestStatus] = useState<'idle' | 'testing' | 'ok' | 'fail'>('idle')
   const [testError, setTestError] = useState('')
@@ -89,7 +89,7 @@ export function SettingsModal({ onClose, onClearHistory }: Props) {
             />
             <p className="text-xs text-gray-600 mt-1.5">
               Pull the model first:{' '}
-              <code className="text-gray-500">ollama pull llama3.1:8b</code>
+              <code className="text-gray-500">ollama pull qwen2:0.5b</code>
             </p>
           </div>
 
